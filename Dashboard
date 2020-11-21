@@ -1,0 +1,59 @@
+<%-- Prevencion del cache --%>
+<%
+    response.setHeader("Cache-Control", "no-cache"); //HTTP 1.1
+    response.setHeader("Pragma", "no-cache"); //HTTP 1.0
+    response.setDateHeader("Expires", 0); //prevents caching at the proxy server
+    response.setHeader("Cache-Control", "no-store");
+%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <jsp:include page="/WEB-INF/pages/commons/header.jsp" />
+        <!-- Nosotros -->
+        <jsp:include page="/WEB-INF/pages/commons/nosotros.jsp" />
+        <!-- Profesionales -->
+        <jsp:include page="/WEB-INF/pages/commons/profesionales.jsp" />
+        <!-- Nuestros Servicios -->
+        <jsp:include page="/WEB-INF/pages/commons/servicios.jsp" />
+
+        <!-- Pie de pagina e informacion -->
+        <jsp:include page="/WEB-INF/pages/commons/footer.jsp" />
+
+        <script type="text/javascript" language="javascript">
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+
+            var today = new Date();
+            $('#citFecha').datetimepicker({
+                format: 'yyyy/mm/dd',
+                weekStart: 1,
+                todayBtn: true,
+                autoclose: true,
+                todayHighlight: true,
+                startView: 2,
+                minView: 2,
+                forceParse: 0,
+                startDate: today
+            });
+
+            $('#citHora').datetimepicker({
+                format: 'hh:ii:ss',
+                weekStart: 1,
+                todayBtn: true,
+                autoclose: true,
+                todayHighlight: true,
+                startView: 1,
+                minView: 0,
+                maxView: 1,
+                forceParse: 0
+            });
+        </script>
+
+    </body>
+</html>
